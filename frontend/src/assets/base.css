@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --blue-one:#1d9be3;
+    --blue-two:#1d9bf0;
+    --black-to-blue:#00080e;
+    --almost-white:rgb(231, 233, 234);
+    --font-default: clamp(1rem,.8vw,1.3rem);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Archivo', sans-serif;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+
+.almost-white{
+    color: var(--almost-white);
+}
+
+.btn-white{
+    background-color: white;
+    color: gray;
+    font-size: calc(var(--font-default) - 1px);
+    padding: 10px;
+    border: 0;
+    border-radius: 10rem;
+}
+.btn-white:hover{
+    background-color: rgb(245, 245, 245);
+}
+
+.btn-light-blue{
+    background-color: var(--blue-one);
+    color: white;
+    font-size: calc(var(--font-default) - 1px);
+    padding: 10px;
+    border: 0;
+    border-radius: 10rem;
+}
+.btn-light-blue:hover{
+    background-color: #1c90d3;
+}
+
+.btn-outlined{
+    background-color: transparent;
+    color: var(--blue-one);
+    font-size: var(--font-default);
+    font-weight: 600;
+    border: solid 1px gray;
+    border-radius: 10rem;
+    padding: 10px;
+    transition: .1s;
+    cursor: pointer;
+}
+.btn-outlined:hover{
+    background-color: var(--black-to-blue);
+}
