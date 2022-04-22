@@ -47,6 +47,14 @@ class User extends Authenticatable
         return $this->HasOne(Profile::class,'user_id');
     }
 
+    public function like(){
+        return $this->HasMany(Like::class);
+    }
+
+    public function retweet(){
+        return $this->HasMany(Retweet::class);
+    }
+
     public function belosngsPost(){
         return $this->HasMany(Post::class);
     }

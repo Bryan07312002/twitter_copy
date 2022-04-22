@@ -16,9 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::with('Post')->get();
+        return Post::with('user','comentario','like','retweet','bookmark')->get();
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -32,7 +31,6 @@ class PostController extends Controller
             'post_reference_id' => $request->post_reference_id,
             'content' => $request->content,
             'has_img' => $request->has_img,
-
         ]);
         return $request;
     }
@@ -45,7 +43,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return Post::with('user','comentario')->find($id);
+        return Post::with('user','comentario','like','retweet','bookmark')->find($id);
     }
 
     /**

@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profile', function (Blueprint $table) {
+        Schema::create('retweets', function (Blueprint $table) {
+            $table->id();
+            $table->string('comentario')->nullable();
             $table->bigInteger('user_id');
-            $table->string('description',255)->nullable();
-            $table->string('link',50)->nullable();
-            $table->date('birth_date')->nullable();
-            $table->string('profile_photo_path')->nullable();
-            $table->string('profile_banner_path')->nullable();
+            $table->bigInteger('post_id');
             $table->timestamps();
-
-            $table->foreign("user_id")->references("id")->on('users');
         });
     }
 
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile');
+        Schema::dropIfExists('retweets');
     }
 };

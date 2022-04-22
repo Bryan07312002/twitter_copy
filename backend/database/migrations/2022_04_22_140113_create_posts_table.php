@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('post', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('post_reference_id')->nullable();
             $table->bigInteger('user_id')->nullable();
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->boolean('has_img')->default(false);
             $table->timestamps();
 
-            $table->foreign("post_reference_id")->references("id")->on('post');
             $table->foreign("user_id")->references("id")->on('users');
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post');
+        Schema::dropIfExists('posts');
     }
 };

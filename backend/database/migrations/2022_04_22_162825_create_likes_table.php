@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('likes', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('user_id');
+            $table->bigInteger('post_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('likes');
     }
 };
