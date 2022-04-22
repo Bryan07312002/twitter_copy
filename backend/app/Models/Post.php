@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Like;
+use App\Models\Profile;
 use App\Models\Retweet;
 use App\Models\Bookmark;
 
@@ -41,5 +42,8 @@ class Post extends Model
 
     public function bookmark(){
         return $this->hasMany(Bookmark::class);
+    }
+    public function user_profile(){
+        return $this->hasOneThrough(Profile::class,User::class,'id','user_id','id','id');
     }
 }

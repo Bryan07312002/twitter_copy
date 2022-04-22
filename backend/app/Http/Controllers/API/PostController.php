@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::with('user','comentario','like','retweet','bookmark')->get();
+        return Post::with('user','comentario','like','retweet','bookmark','user_profile')->get();
     }
     /**
      * Store a newly created resource in storage.
