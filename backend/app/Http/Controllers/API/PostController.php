@@ -14,9 +14,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Post::with('user','comentario','like','retweet','bookmark','user_profile')->get();
+        //return Post::with('user','comentario','like','retweet','bookmark','user_profile')->get();
+        if($request->teste)return $request->teste;
     }
     /**
      * Store a newly created resource in storage.

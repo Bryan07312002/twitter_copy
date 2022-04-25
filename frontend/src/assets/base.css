@@ -3,6 +3,7 @@
 :root {
     --blue-one:#1d9be3;
     --blue-two:#1d9bf0;
+    --light-blue:#E8F5FD;
     --black-to-blue:#00080e;
     --almost-white:rgb(231, 233, 234);
     --font-default: clamp(1rem,.8vw,1.3rem);
@@ -12,6 +13,11 @@
     margin: 0;
     padding: 0;
     font-family:'Archivo', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    min-width: 100vw;
 }
 
 .flex-center{

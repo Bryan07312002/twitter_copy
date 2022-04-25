@@ -1,5 +1,15 @@
+<script setup>
+  import DefaultHomeLayoutVue from '../components/Layouts/DefaultHomeLayout.vue';
+</script>
+
 <template>
-  <main>
-    <h1>Hello World Twitter</h1>
-  </main>
+  <DefaultHomeLayoutVue class="center">
+    
+  </DefaultHomeLayoutVue>
 </template>
+
+<style>
+.center{
+  margin: 0 auto;
+}
+</style>
