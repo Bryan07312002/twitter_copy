@@ -1,15 +1,21 @@
 <script setup>
-  import DefaultHomeLayoutVue from '../components/Layouts/DefaultHomeLayout.vue';
+  import { defineComponent } from 'vue'
+  import DefaultLayout from '../layouts/DefaultLayout.vue';
 </script>
 
 <template>
-  <DefaultHomeLayoutVue class="center">
-    
-  </DefaultHomeLayoutVue>
+  <DefaultLayout>
+
+  </DefaultLayout>
 </template>
 
-<style>
-.center{
-  margin: 0 auto;
-}
-</style>
+<script>
+  export default defineComponent({
+    setup() {
+        
+    },
+    props:{
+      isOpen:Boolean
+    }
+  })
+</script>
