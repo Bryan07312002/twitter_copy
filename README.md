@@ -1,2 +1,2 @@
 # twitter_copy
-Simple Twitter copy project using Laravel, PostgreesSQL, MongoDB, VueJS, Vue Router, Pinea, Vitest to practice new technologies
+Simple Twitter copy project using Laravel, PostgreesSQL, VueJS, Vue Router, Pinea and Vitest, with the intention to practice new technologies
