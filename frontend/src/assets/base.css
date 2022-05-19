@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 :root {
   --default-height:35px;
-  
-  /* prefered light mode */
-  --base-color-light:black;
-  --base-color-light-white:white;
-  --base-color-light-gray:rgb(215, 227, 230);
+  --blue:#1DA1F2;
+  --black:#000000;
+  --light-black:#14171A;
+  --white:#ffffff;
+  --dark-gray:#657786;
+  --light-gray:#AAB8C2;
+  --extra-light-gray:#E1E8ED;
+  --extra-extra-light-gray:#F5F8FA;
 }
 
 *{
   margin: 0;
   padding: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
 /* Reusable */
 .thin-bar{
@@ -41,25 +47,38 @@
 .bold{
   font-weight: bold;
 }
+.container{
+  max-width: 1440px;
+  margin: 0 auto;
+  max-height: 100vh;
+}
+.screen-height{
+  height:100vh;
+}
+@media only screen and (max-width: 1440px){
+  .container{
+    min-width: 100vw;
+  }
+}
 /* Buttons */
 .btn-white-bg{
   height: var(--default-height);
-  border:solid 1px var(--base-color-light-gray);
+  border:solid 1px var(--extra-light-gray);
   border-radius: 30px;
-  background-color: var(--base-color-light-white);
+  background-color: var(--white);
   transition: .5s;
 }
 .btn-white-bg:hover{
-  background-color: var(--base-color-light-gray);
+  background-color: var(--extra-extra-light-gray);
 }
 .btn-black-bg{
   height: var(--default-height);
-  border:solid 1px var(--base-color-light-gray);
+  border:solid 1px var(--light-gray);
   border-radius: 30px;
-  background-color: var(--base-color-light);
-  color: var(--base-color-light-white);
+  background-color: var(--black);
+  color: var(--white);
   transition: .5s;
 }
 .btn-black-bg:hover{
-  background-color: rgb(32, 32, 32);
+  background-color: var(--light-black);
 }
