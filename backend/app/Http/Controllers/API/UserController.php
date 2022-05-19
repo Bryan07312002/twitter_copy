@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\PersonalAccessToken;
+
 
 class UserController extends Controller
 {
@@ -21,7 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return $this->User->with('Profile')->find(1);
+
+        return $this->User->all('id','name');
     }
 
     /**
@@ -57,7 +62,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->User->with('Profile')->find($id);
     }
 
     /**
@@ -78,8 +83,84 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id) //not working yet
     {
-        //
+        $tokenRequest = substr($request->header()["authorization"][0],7);
+        $tokenIdObject = PersonalAccessToken::findToken($tokenRequest);
+        $UserRequested = $this->User->find($tokenIdObject->tokenable_id);
+        $UserPicked = $this->User->find($id);
+
+        if($UserRequested->id == $UserPicked->id){
+            try{
+                $UserPicked->with("post")->delete();
+            }catch(Exception $e){
+                return response()->json([
+                    'success' => false,
+                    'message' => $e->getMessage(),
+                ]);
+            }
+        }
+
+        return response()->json([
+            'success' => false,
+            "message" => "Unauthorized",
+        ],401);
+    }
+
+    public function login(Request $request)
+    {
+        try {
+            // create a instance of User 
+            $users = new User();
+            // check the validation
+            $validator = Validator::make($request->all(), [
+                'email' => 'required| max:30| email | min:10',
+                'password' => 'required | max:12 | min:5'
+            ]);
+            // check validation fails
+            if ($validator->fails()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $validator->errors()->all(),
+                ]);
+            } else {
+                // get user by email
+                $user = $users->where('email', $request->email)->first();
+                if (!$user) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Invalid Email and Password',
+                    ]);
+                } else {
+                    // check password
+                    if (!Hash::check($request->password, $user->password)) {
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'Invalid Email and Password',
+                        ]);
+                    } else {
+                        $token = $user->createToken("token")->plainTextToken;
+                        return response()->json([
+                            "success" => true,
+                            "token" => $token,
+                            "message" => "Login successfully"
+                        ]);
+                    }
+                }
+            }
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $tokenRequest = substr($request->header()["authorization"][0],7);
+        $UserIdObject = PersonalAccessToken::findToken($tokenRequest);
+
+        auth()->user()->tokens()->where('tokenable_id', $UserIdObject->tokenable_id)->delete();
     }
 }

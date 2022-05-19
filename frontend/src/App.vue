@@ -1,5 +1,5 @@
 <script setup>
-  import { RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -7,5 +7,5 @@
 </template>
 
 <style>
-  @import '@/assets/base.css';
+@import '@/assets/base.css';
 </style>

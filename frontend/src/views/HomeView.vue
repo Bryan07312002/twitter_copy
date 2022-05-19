@@ -1,21 +1,3 @@
-<script setup>
-  import { defineComponent } from 'vue'
-  import DefaultLayout from '../layouts/DefaultLayout.vue';
-</script>
-
 <template>
-  <DefaultLayout>
-
-  </DefaultLayout>
+    <h1>heelo home</h1>
 </template>
-
-<script>
-  export default defineComponent({
-    setup() {
-        
-    },
-    props:{
-      isOpen:Boolean
-    }
-  })
-</script>

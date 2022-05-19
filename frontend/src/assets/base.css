@@ -1,66 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 :root {
-    --background-color:white;
-    --border-color:lightgray;
-    --blue-one:#1d9be3;
-    --blue-two:#1d9bf0;
-    --light-blue:#E8F5FD;
-    --black-to-blue:#00080e;
-    --almost-white:rgb(231, 233, 234);
-    --font-default: clamp(1rem,.8vw,1.3rem);
+  --default-height:35px;
+  
+  /* prefered light mode */
+  --base-color-light:black;
+  --base-color-light-white:white;
+  --base-color-light-gray:rgb(215, 227, 230);
 }
 
 *{
-    margin: 0;
-    padding: 0;
-    font-family:'Archivo', sans-serif;
+  margin: 0;
+  padding: 0;
 }
-
+/* Reusable */
+.thin-bar{
+  width: 50%;
+  height: 1px;
+  background-color: black;
+  margin: auto 5px;
+}
+/* Utils */
 .flex-center{
-    display: flex;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.almost-white{
-    color: var(--almost-white);
+.flex-row{
+  display: flex;
+  flex-direction: row;
 }
-
-.btn-white{
-    background-color: white;
-    color: gray;
-    font-size: calc(var(--font-default) - 1px);
-    padding: 10px;
-    border: 0;
-    border-radius: 10rem;
+.flex-col{
+  display: flex;
+  flex-direction: column;
 }
-.btn-white:hover{
-    background-color: rgb(245, 245, 245);
+.full-width{
+  width: 100%;
 }
-
-.btn-light-blue{
-    background-color: var(--blue-one);
-    color: white;
-    font-size: calc(var(--font-default) - 1px);
-    padding: 10px;
-    border: 0;
-    border-radius: 10rem;
+.svg-default-size{
+  width: 15px;
 }
-.btn-light-blue:hover{
-    background-color: #1c90d3;
+.bold{
+  font-weight: bold;
 }
-
-.btn-outlined{
-    background-color: transparent;
-    color: var(--blue-one);
-    font-size: var(--font-default);
-    font-weight: 600;
-    border: solid 1px gray;
-    border-radius: 10rem;
-    padding: 10px;
-    transition: .1s;
-    cursor: pointer;
+/* Buttons */
+.btn-white-bg{
+  height: var(--default-height);
+  border:solid 1px var(--base-color-light-gray);
+  border-radius: 30px;
+  background-color: var(--base-color-light-white);
+  transition: .5s;
 }
-.btn-outlined:hover{
-    background-color: var(--black-to-blue);
+.btn-white-bg:hover{
+  background-color: var(--base-color-light-gray);
+}
+.btn-black-bg{
+  height: var(--default-height);
+  border:solid 1px var(--base-color-light-gray);
+  border-radius: 30px;
+  background-color: var(--base-color-light);
+  color: var(--base-color-light-white);
+  transition: .5s;
+}
+.btn-black-bg:hover{
+  background-color: rgb(32, 32, 32);
 }

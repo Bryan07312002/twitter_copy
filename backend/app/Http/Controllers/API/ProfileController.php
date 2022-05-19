@@ -14,7 +14,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return [
+            
+        ];
+        // return [
+        //     "err" => "ERROR"
+        // ];
     }
 
     /**

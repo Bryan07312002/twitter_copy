@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        //return Post::with('user','comentario','like','retweet','bookmark','user_profile')->get();
+        return Post::with('user','comentario','like','retweet','bookmark','user_profile')->get();
         if($request->teste)return $request->teste;
     }
     /**
