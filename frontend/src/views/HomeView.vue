@@ -6,4 +6,6 @@
 
 <script setup>
     import DefaultLayout from '../layouts/DefaultLayout.vue';
+    import { ApiService } from '../utils/ApiService';
+    ApiService.get('user')
 </script>
