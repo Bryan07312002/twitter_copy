@@ -76,7 +76,7 @@
       password:FormLogin.password.value
     }
     AuthStore.login(payload)
-    router.push({name:'home'})
+    //router.push({name:'home'})
   }
 </script>
 
