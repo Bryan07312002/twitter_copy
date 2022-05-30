@@ -5,9 +5,9 @@
         </router-link>
 
         <router-link to="/" class="btn-nav">
-            <div class="flex-row .align-center">
+            <div class="flex-row align-center">
                 <HomeIcon class="svg-menu-size-small" />
-                <p class="hide-when-shrink padding-left">Home</p>
+                <p class="hide-when-shrink padding-left semibold">Home</p>
             </div>
         </router-link>
     </nav>

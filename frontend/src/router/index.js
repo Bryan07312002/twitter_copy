@@ -19,13 +19,13 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component:()=>import('../views/HomeView.vue'),
-      beforeEnter: multiguard([AuthMiddleware])
+      //beforeEnter: multiguard([AuthMiddleware])
     },
     {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),
-      beforeEnter: multiguard([AuthMiddleware])
+      //beforeEnter: multiguard([AuthMiddleware])
     }
   ]
 })

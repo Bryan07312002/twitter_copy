@@ -44,8 +44,15 @@
 .svg-default-size{
   width: 15px;
 }
+.align-center{
+  display:flex;
+  align-items:center;
+}
 .bold{
   font-weight: bold;
+}
+.semibold{
+  font-weight: 500;
 }
 .container{
   max-width: 1440px;
