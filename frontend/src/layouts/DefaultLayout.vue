@@ -1,7 +1,7 @@
 <template>
     <div class="container organization">
         <Menu />
-        <main >
+        <main class="main-container">
             <slot />
         </main>
     </div>
@@ -13,8 +13,12 @@
         grid-template-columns: 15% 1fr;
         height: 100vh;
     }
+    .main-container{
+        width: 70%;
+    }
     main{
         height: 100%;
+        border-right: solid 1px var(--light-gray);
     }
     @media only screen and (max-width: 1280px){
         .organization{
@@ -25,6 +29,9 @@
         .organization{
            display: flex;
            flex-direction: column-reverse;
+        }
+        .main-container{
+            width: 100%;
         }
     }
 </style>

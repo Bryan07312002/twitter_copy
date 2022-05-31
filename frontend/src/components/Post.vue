@@ -41,8 +41,19 @@
         display:flex;
         flex-direction:row;
     }
+    .post_profile_name-container{
+        display: flex;
+        text-align: center;
+        height: 100%;
+    }
+    .post_profile_name{
+        font-weight: 500;
+    }
     .post_profile_img{
         height:100%;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 100px;
     }
     .post_text-container{
         width: 100%;
@@ -55,11 +66,23 @@
     }
     .post_footer_div-container{
         display:flex;
-        background:lightblue;
-        width:100%;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    .post_footer_div-container:hover .post_footer_icon{
+        fill: white;
+        background-color: var(--blue);
+    }
+    .post_footer_div-container:hover .post_footer_number{
+        color: var(--blue);
     }
     .post_footer_icon{
         height:20px;
+        padding: 4px;
+        border-radius: 100px;
+        fill: var(--dark-gray);
+        overflow: visible;
     }
     .post_footer_number{
         font-size:1rem;
