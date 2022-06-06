@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('retweets', function (Blueprint $table) {
+        Schema::create('followers', function (Blueprint $table) {
             $table->id();
-            $table->string('comentario')->nullable();
-            $table->bigInteger('user_id');
-            $table->bigInteger('post_id');
+            $table->unsignedBigInteger('follower_id');
+            $table->unsignedBigInteger('followed_id');
             $table->timestamps();
+
+            $table->foreign("follower_id")->references("id")->on('users');
+            $table->foreign("followed_id")->references("id")->on('users');
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('retweets');
+        Schema::dropIfExists('followers');
     }
 };

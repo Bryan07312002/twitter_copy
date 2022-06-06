@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('retweets', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('post_reference_id')->nullable();
-            $table->bigInteger('user_id')->nullable();
-            $table->string('content',255);
-            $table->boolean('has_img')->default(false);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('post_id');
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on('users');
+            $table->foreign("post_id")->references("id")->on('users');
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('retweets');
     }
 };

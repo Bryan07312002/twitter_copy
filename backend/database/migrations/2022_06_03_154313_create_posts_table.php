@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('feeds', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('post_id');
-            $table->boolean('is_retweet')->default(false);
+            $table->unsignedBigInteger('post_reference_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->string('content',255);
+            $table->boolean('has_img');
             $table->timestamps();
+
+            $table->foreign("user_id")->references("id")->on('users');
+            $table->foreign("post_reference_id")->references("id")->on('posts');
         });
     }
 
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feeds');
+        Schema::dropIfExists('posts');
     }
 };
