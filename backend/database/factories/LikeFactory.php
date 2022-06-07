@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use App\Models\Post;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Like>
@@ -17,7 +19,8 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => $this->faker->numberBetween($min = 1, $max = count(User::all())),
+            'post_id' => $this->faker->numberBetween($min =1, $max = count(Post::all())),
         ];
     }
 }

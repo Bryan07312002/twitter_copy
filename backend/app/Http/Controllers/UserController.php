@@ -8,17 +8,47 @@ use App\Models\User;
 
 
 class UserController extends Controller
-{
-    public function index(User $user){
-        return rand(0,count(User::all()));
+{    
+    public function index(Request $request){
+        $with = explode(',',$request->with);
+        if ($with){
+            return response()->json([
+                'status' => 'success',
+                'users' => User::with($with)->get(),
+            ]);
+        }
+
         return response()->json([
             'status' => 'success',
-            'user' => Auth::user(),
-            'users' => $user->all()
+            'users' => User::all(),
         ]);
     }
-    public function store(){}
-    public function show(){}
-    public function update(){}
-    public function delete(){}
+
+    public function store(Request $request){
+        
+    }
+
+    public function show($id, Request $request){
+        $with = explode(',',$request->with);
+        if($with[0] != ''){
+            return response()->json([
+                'status' => 'success',
+                'users' => User::where('id', $id)->with($with)->get(),
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'user'=> User::where('id',$id)->get()
+        ]);
+    }
+
+    public function update(){
+
+    }
+
+    public function destroy($id){
+        $userDestroy = User::find($id);
+        $userDestroy->delete();
+    }
 }
