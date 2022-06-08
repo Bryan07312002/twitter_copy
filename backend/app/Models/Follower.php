@@ -11,7 +11,7 @@ class Follower extends Model
     use HasFactory;
     protected $table = 'followers'; 
 
-    // public function followers(){
-    //     return $this->hasMany(User::class);
-    // }
+    public function followers(){
+        return $this->belongsTo(Post::class);
+    }
 }

@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('post_reference_id')->nullable();
+            $table->unsignedBigInteger('post_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->string('content',255);
             $table->boolean('has_img');
+            $table->integer('comment_number');
+            $table->integer('like_number');
+            $table->integer('retweet_number');
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on('users')->onDelete('cascade');
-            $table->foreign("post_reference_id")->references("id")->on('posts')->onDelete('cascade');
+            $table->foreign("post_id")->references("id")->on('posts')->onDelete('cascade');
         });
     }
 

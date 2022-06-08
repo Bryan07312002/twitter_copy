@@ -11,7 +11,7 @@ class UserController extends Controller
 {    
     public function index(Request $request){
         $with = explode(',',$request->with);
-        if ($with){
+        if ($with[0] != ''){
             return response()->json([
                 'status' => 'success',
                 'users' => User::with($with)->get(),

@@ -19,10 +19,10 @@ class Like extends Model
     protected $table = 'likes'; 
 
     public function likes(){
-        return $this->hasOne(Post::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function user(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -19,11 +19,11 @@ class Retweet extends Model
     protected $table = 'retweets'; 
     
     public function retweets(){
-        return $this->hasOne(Post::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function user(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
     
 }
