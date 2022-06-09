@@ -25,7 +25,10 @@ class PostFactory extends Factory
             'user_id'=>$this->faker->numberBetween($min = 1, $max = count(User::all())),
             'content'=>$this->faker->text,
             'has_img'=>$this->faker->boolean($chanceOfGettingTrue = 20),
-            'created_at'=>$this->faker->unixtime()
+            'created_at'=>$this->faker->unixtime(),
+            'comment_number'=>0,
+            'like_number'=>0,
+            'retweet_number'=>0,
         ];
     }
 

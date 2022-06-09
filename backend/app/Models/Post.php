@@ -30,19 +30,6 @@ class Post extends Model
             'has_img' => 'required|boolean',
         ];
     }
-
-    public function add_comment_number($post_id){
-        $post = Post::find($post_id);
-        $post->comment_number = $post->comment_number + 1;
-        $post->save();
-    }
-
-    public function sub_comment_number($id){
-        $post = Post::find($post_id);
-        $post->comment_number = $post->comment_number - 1;
-        $post->save();
-    }
-
     public function comments(){
         return $this->hasMany(Post::class);
     }

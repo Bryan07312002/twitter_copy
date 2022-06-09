@@ -19,4 +19,5 @@ Route::middleware('auth:api')->group(function(){
     Route::apiResource('user',UserController::class);
     Route::apiResource('like',LikeController::class);
     Route::apiResource('post',PostController::class);
+
 });

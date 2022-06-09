@@ -27,7 +27,6 @@ class PostController extends Controller
         $request->validate($post->rules());
         
         if($request->post_id || $request->post_id != null){
-            $post->add_comment_number($request->post_id);
             $post->post_id = $request->post_id;
         }
 
@@ -52,7 +51,7 @@ class PostController extends Controller
                 'posts' => Post::where('id', $id)->with($with)->get(),
             ]);
         }
-
+ 
         return response()->json([
             'status' => 'success',
             'post'=> Post::where('id',$id)->with(['comments','retweets','likes'])->get(),
