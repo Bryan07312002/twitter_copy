@@ -25,8 +25,15 @@ class PostController extends Controller
 
     public function store(Request $request, Post $post){
         $request->validate($post->rules());
-        
-        if($request->post_id || $request->post_id != null){
+        $post_exists = $post->exists($request->post_id); 
+        if(($request->post_id || $request->post_id != null)){
+            
+            if(!$post_exists){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'post does not exists'
+                ]);
+            }
             $post->post_id = $request->post_id;
         }
 

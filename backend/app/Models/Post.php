@@ -30,6 +30,11 @@ class Post extends Model
             'has_img' => 'required|boolean',
         ];
     }
+
+    public function exists($post_id){
+        return Post::where('id', $post_id)->exists();
+    }
+
     public function comments(){
         return $this->hasMany(Post::class);
     }

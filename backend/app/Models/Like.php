@@ -15,16 +15,8 @@ class Like extends Model
         'user_id',
         'post_id',
     ];
-
-    
     protected $table = 'likes';
 
-    public function is_unique($post_id,$user_id){
-        $queryResult = Like::where('post_id',$post_id)->where('user_id', $user_id)->get();
-        return isset($queryResult[0]);
-        if($queryResult) return true;
-        return false;
-    }
     public function rules(){
         return [
             'post_id' => 'required|min:1|numeric',
