@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Observers\PostObserver;
 use App\Observers\LikeObserver;
+use App\Observers\RetweetObserver;
 use App\Models\Post;
+use App\Models\Retweet;
 use App\Models\Like;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -33,6 +35,7 @@ class EventServiceProvider extends ServiceProvider
     {
         Post::observe(PostObserver::class);
         Like::observe(LikeObserver::class);
+        Retweet::observe(RetweetObserver::class);
     }
 
     /**
