@@ -12,6 +12,9 @@ class Follower extends Model
     protected $table = 'followers'; 
 
     public function followers(){
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(User::class);
+    }
+    public function followed(){
+        return $this->belongsTo(User::class);
     }
 }

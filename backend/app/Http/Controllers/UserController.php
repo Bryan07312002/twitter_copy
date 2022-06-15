@@ -24,10 +24,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request){
-        
-    }
-
     public function show($id, Request $request){
         $with = explode(',',$request->with);
         if($with[0] != ''){

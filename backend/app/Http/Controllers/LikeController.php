@@ -14,10 +14,6 @@ class LikeController extends Controller
         $this->post = new Post();
     }
 
-    public function index(){
-
-    }
-
     public function store(Request $request,Like $like){
         $request->validate($like->rules());
         $post_exists = $this->post->exists($request->post_id);
