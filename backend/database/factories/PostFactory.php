@@ -18,12 +18,13 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+        shell_exec('clear');
         return [
             'post_id'=>
                 $this->rand(0,count(Post::all()))
                 ,
             'user_id'=>$this->faker->numberBetween($min = 1, $max = count(User::all())),
-            'content'=>$this->faker->text,
+            'content'=>$this->get_random_frase(),
             'has_img'=>$this->faker->boolean($chanceOfGettingTrue = 20),
             'created_at'=>$this->faker->unixtime(),
             'comment_number'=>0,
@@ -38,5 +39,15 @@ class PostFactory extends Factory
             return null;
         }
         return $random_number;
+    }
+
+    public function get_random_frase(){
+        $hg = file_get_contents("https://positive-vibes-api.herokuapp.com/quotes/random");
+        $json_message = json_decode($hg);
+        if(!isset($json_message->data)){
+            return $this->get_random_frase();
+        }else{
+            return json_decode($hg)->data;
+        }
     }
 }
