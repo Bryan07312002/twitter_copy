@@ -10,12 +10,22 @@
                 <p class="hide-when-shrink padding-left semibold">Home</p>
             </div>
         </router-link>
+
+        <Button class="btn-blue btn-nav hide-when-small">
+            <p class="hide-when-shrink">
+                Tweet
+            </p>
+        </Button>        
     </nav>
 </template>
 
 <script setup>
-import BirdIcon from './icons/BirdIcon.vue';
-import HomeIcon from './icons/HomeIcon.vue';
+    import BirdIcon from './icons/BirdIcon.vue';
+    import HomeIcon from './icons/HomeIcon.vue';
+    import Button from './ButtonDefault.vue';
+
+    const emits = defineEmits(['open_tweet_modal'])
+
 </script>
 
 <style scoped>

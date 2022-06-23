@@ -2,7 +2,11 @@
     <teleport v-if="isOpen" to="body">
         <div class="background">
             <div class="Modal-window">
-                <button v-if="canClose" class="Modal-close-button">
+                <button 
+                    v-if="canClose"
+                    class="Modal-close-button"
+                    @click="emitCloseModal()"
+                >
                     X
                 </button>
                 <div class="Modal-container">

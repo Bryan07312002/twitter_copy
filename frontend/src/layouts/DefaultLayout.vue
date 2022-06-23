@@ -1,6 +1,8 @@
 <template>
     <div class="container organization">
-        <Menu />
+        <Menu
+            @open_tweet_modal="emits('open_tweet_modal')"
+        />
         <main class="main-container">
             <slot />
         </main>
@@ -40,5 +42,7 @@
 </style>
 
 <script setup>
-import Menu from '../components/Menu.vue';
+    import Menu from '../components/Menu.vue';
+
+    const emits = defineEmits(['open_tweet_modal'])
 </script>

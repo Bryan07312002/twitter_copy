@@ -10,7 +10,6 @@ export const ApiService = {
   },
 
   setHeader() {
-    console.log("setHeader",JwtService.getToken());
     axios.defaults.headers.common["Authorization"] = `Bearer ${JwtService.getToken()}`;
   },
 
@@ -20,7 +19,6 @@ export const ApiService = {
   },
 
   async get(resource, slug = "") {
-    console.log(axios.defaults.headers)
     try {
       return await axios.get(`${resource}/${slug}`);
     } catch (error) {

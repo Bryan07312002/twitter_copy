@@ -89,3 +89,15 @@
 .btn-black-bg:hover{
   background-color: var(--light-black);
 }
+.btn-blue{
+  height: var(--default-height);
+  color: var(--white);
+  font-weight: bold;
+  border:solid 1px var(--extra-light-gray);
+  border-radius: 30px;
+  background-color: var(--blue);
+  transition: .5s;
+}
+.btn-blue:hover{
+  background-color: var(--blue);
+}
