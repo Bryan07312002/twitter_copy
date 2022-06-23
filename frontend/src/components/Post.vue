@@ -1,29 +1,38 @@
 <template>
-    <div class="post-container">
-        <div class="post_profile-container">
-            <img 
-                class="post_profile_img"
-                :src="photoPath"
-            >
-            <span class="post_profile_name-container">
-                <p class="post_profile_name">{{name}}</p>
-            </span>
+        <div class="post-container">
+            <div class="post_grid-container">
+                <div class="post_profile_img-container">
+                    <img
+                        class="post_profile_img" 
+                        :src="photoPath"
+                    >
+                </div>
+            <div class="post_text-container">
+                <div class="post_profile_name-container">
+                    <p class="post_profile_name">
+                        {{name}}
+                    </p>
+                </div>
+                <div class="post_text">
+                    <p>
+                        {{text}}
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="post_text-container">
-            <span class="post_text">{{text}}</span>
-        </div>
+        
         <div class="post_footer-container">
             <div class="post_footer_div-container">
                 <CommentIcon class="post_footer_icon"/>
-                <span class="post_footer_number">{{comments}}</span>
+                {{comments}}
             </div>
             <div class="post_footer_div-container">
                 <RetweetIcon class="post_footer_icon"/>
-                <p class="post_footer_number">{{retweets}}</p>
+                {{retweets}}
             </div>
             <div class="post_footer_div-container">
-                <likeIcon class="post_footer_icon"/>
-                <p class="post_footer_number">{{likes}}</p>
+                <LikeIcon class="post_footer_icon"/>
+                {{likes}}
             </div>
         </div>
     </div>
@@ -31,62 +40,61 @@
 
 <style scoped>
     .post-container{
+        max-width: 100vh;
         width: 100%;
-        border-top:solid 1px var(--light-gray);
-        border-bottom:solid 1px var(--light-gray);
+        height: fit-content;
+        border-bottom: solid 1px var(--light-gray);
+        overflow: hidden;
     }
-    .post_profile-container{
-        width: 100%;
-        height: 50px;
+    .post_grid-container{
+        display: grid;
+        grid-template-columns: 10% 90%;
+        height: fit-content;
+        overflow: hidden;
+    }
+    @media only screen and (max-width: 600px){
+        .post_grid-container{
+            grid-template-columns: 15% 95%;  
+        }
+    }
+    @media only screen and (max-width: 400px){
+        .post_grid-container{
+            grid-template-columns: 20% 80%;  
+        }
+    }
+    .post_profile_img-container{
         display:flex;
-        flex-direction:row;
-    }
-    .post_profile_name-container{
-        display: flex;
-        text-align: center;
+        align-items: start;
+        justify-content: center;
         height: 100%;
+        padding: 10px;
+        background: blue;
+    }
+    .post_profile_img{
+        width: 100%;
+        border-radius: 10000px;
+    }
+    .post_text-container{
+        height: 100%;
+        padding: 10px;
     }
     .post_profile_name{
         font-weight: 500;
     }
-    .post_profile_img{
-        height:100%;
-        margin-left: 10px;
-        margin-right: 10px;
-        border-radius: 100px;
-    }
-    .post_text-container{
-        width: 100%;
-        min-height:100px;
-    }
     .post_footer-container{
-        display:flex;
-        flex-direction: row;
-        justify-content: space-around;
+        height: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
     .post_footer_div-container{
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
-    }
-    .post_footer_div-container:hover .post_footer_icon{
-        fill: white;
-        background-color: var(--blue);
-    }
-    .post_footer_div-container:hover .post_footer_number{
-        color: var(--blue);
     }
     .post_footer_icon{
-        height:20px;
-        padding: 4px;
-        border-radius: 100px;
-        fill: var(--dark-gray);
-        overflow: visible;
-    }
-    .post_footer_number{
-        font-size:1rem;
-        margin-left:10px;
+        height: 20px;
+        margin: 5px;
+        cursor: pointer;
     }
 </style>
 

@@ -28,9 +28,10 @@ export const useAuthStore = defineStore('Auth',() => {
 //Actions
   const login = async (payload) => {
     new Promise(resolve => {
-      ApiService.post("login",payload)
+      ApiService.post("auth/login",payload)
         .then(({ data }) => {
-          setAuth(data)
+          console.log(data)
+          setAuth(data.authorisation.token)
           resolve(data);
         })
         .catch(({ response }) => {
@@ -39,17 +40,23 @@ export const useAuthStore = defineStore('Auth',() => {
     })
   }
 
+  const setAuth = (new_token) => {
+    token.value = new_token
+  }
+
   const logout = async () => {
     ApiService.post('logout');
     purgeAuth();
   }
 
-  const setAuth = (data) =>{
-    token.value = data.token
-    if(data.user){
-      User.value.name = data.user.name
-      User.value.email = data.user.email
+  async function is_auth(){
+    try{
+      await ApiService.get('auth/me') 
+    }catch(error){
+      return false
     }
+    
+    return true
   }
 
   const purgeAuth = () => {
@@ -61,7 +68,7 @@ export const useAuthStore = defineStore('Auth',() => {
 
   return {
     User,
-    isAuthenticated,
+    is_auth,
     purgeAuth,
     token,
     login,

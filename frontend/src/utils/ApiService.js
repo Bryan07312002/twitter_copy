@@ -10,6 +10,7 @@ export const ApiService = {
   },
 
   setHeader() {
+    console.log("setHeader",JwtService.getToken());
     axios.defaults.headers.common["Authorization"] = `Bearer ${JwtService.getToken()}`;
   },
 
@@ -18,10 +19,13 @@ export const ApiService = {
     });
   },
 
-  get(resource, slug = "") {
-    return axios.get(`${resource}/${slug}`).catch(error => {
+  async get(resource, slug = "") {
+    console.log(axios.defaults.headers)
+    try {
+      return await axios.get(`${resource}/${slug}`);
+    } catch (error) {
       throw new Error(`ApiService ${error}`);
-    });
+    }
   },
 
   post(resource, params) {

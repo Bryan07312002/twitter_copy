@@ -15,6 +15,8 @@
     }
     .main-container{
         width: 70%;
+        max-width: 100vh;
+        overflow: auto;
     }
     main{
         height: 100%;

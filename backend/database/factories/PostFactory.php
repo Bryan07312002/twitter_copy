@@ -18,7 +18,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        shell_exec('clear');
+        //shell_exec('cls');
         return [
             'post_id'=>
                 $this->rand(0,count(Post::all()))

@@ -1,19 +1,33 @@
 <template>
     <DefaultLayout>
         <Post 
-            photoPath="https://64.media.tumblr.com/3c948972b7be8a79f1436393a3a26281/tumblr_ogw26dCy7A1smd799o1_1280.jpg"
-            name="kami Ozato Nigari"
-            text="Hello twitter"
-            likes="132"
-            retweets="13"
-            comments="15"
+            v-for="tweet in tweets"
+            v-bind:key="tweet"
+            :photoPath="''"
+            :name="tweet.user.name"
+            :text="tweet.content"
+            :likes="tweet.like_number"
+            :retweets="tweet.retweet_number"
+            :comments="tweet.comment_number"
         />
+        {{tweets[0]}}
     </DefaultLayout>
 </template>
 
 <script setup>
+    import {ref,onMounted} from 'vue'
     import DefaultLayout from '../layouts/DefaultLayout.vue';
     import { ApiService } from '../utils/ApiService';
     import Post from '../components/Post.vue'
-    ApiService.get('user')
+    
+    const tweets = ref()
+    async function getFeed(){
+        tweets.value = await ApiService.get('feed')
+        tweets.value  = tweets.value.data
+    }
+    getFeed()
+    onMounted(() => {
+        
+    })
+    
 </script>
