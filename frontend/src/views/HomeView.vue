@@ -3,14 +3,15 @@
         <Post 
             v-for="tweet in tweets"
             v-bind:key="tweet"
-            :photoPath="''"
+            :photoPath="tweet.user.profile_photo_path"
             :name="tweet.user.name"
             :text="tweet.content"
             :likes="tweet.like_number"
             :retweets="tweet.retweet_number"
             :comments="tweet.comment_number"
+            :date="tweet.created_at"
         />
-        {{tweets[0]}}
+
     </DefaultLayout>
 </template>
 
@@ -29,5 +30,4 @@
     onMounted(() => {
         
     })
-    
 </script>

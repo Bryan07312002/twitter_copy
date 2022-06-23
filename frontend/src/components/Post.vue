@@ -12,6 +12,7 @@
                     <p class="post_profile_name">
                         {{name}}
                     </p>
+                    {{date()}}
                 </div>
                 <div class="post_text">
                     <p>
@@ -68,7 +69,7 @@
         justify-content: center;
         height: 100%;
         padding: 10px;
-        background: blue;
+        
     }
     .post_profile_img{
         width: 100%;
@@ -77,6 +78,7 @@
     .post_text-container{
         height: 100%;
         padding: 10px;
+        padding-right: 50px;
     }
     .post_profile_name{
         font-weight: 500;
@@ -124,7 +126,7 @@
             default:0
         },
         date:{
-            type:Date,
+            type:String,
             default:Date.now()
         },
         comments:{
@@ -132,4 +134,21 @@
             default:0
         }
     })
+
+    function date (){
+        const date = new Date(props.date);
+        const date_format = date.toLocaleDateString();
+        const time_passed_ms = Date.now() - date.getTime();
+        const time_passed_sec = time_passed_ms/1000
+        const time_passed_min = time_passed_sec /60
+        const time_passed_h = time_passed_min/60
+        const time_passed_days = time_passed_h/24
+
+        if(time_passed_min <= 59) return time_passed_min
+        if(time_passed_h <= 23) return time_passed_h
+        if(time_passed_days <= 6) return time_passed_days
+
+        return date_format
+    }
 </script>
+
