@@ -11,9 +11,16 @@ class Follower extends Model
     use HasFactory;
     protected $table = 'followers'; 
 
+    public function rules(){
+        return [
+            "followed_id" => "required|numeric|min:1",
+        ];
+    }
+
     public function followers(){
         return $this->belongsTo(User::class);
     }
+
     public function followed(){
         return $this->belongsTo(User::class);
     }

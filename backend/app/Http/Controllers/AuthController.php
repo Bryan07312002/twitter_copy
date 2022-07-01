@@ -16,7 +16,9 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
         $credentials = $request->only('email', 'password');
-
+        
+        $can_auth = User::where('email', '=', $request->email)->where('password', '=', $request->password)->get();
+        if($can_auth) 
         $token = Auth::attempt($credentials);
         if (!$token) {
             return response()->json([

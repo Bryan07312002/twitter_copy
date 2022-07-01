@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FeedController;
+use App\Http\Controllers\FollowerController;
 
 Route::post('auth/login', [AuthController::class,'login']);
 Route::post('auth/register', [AuthController::class,'register']);
@@ -23,4 +24,5 @@ Route::middleware('auth:api')->group(function(){
     Route::apiResource('user',UserController::class);
     Route::apiResource('like',LikeController::class);
     Route::apiResource('post',PostController::class);
+    Route::apiResource('follower',FollowerController::class);
 });
